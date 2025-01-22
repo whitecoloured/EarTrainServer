@@ -1,0 +1,12 @@
+.vs/
+
+bin/
+obj/
+
+EarTrain.API/EarTrain.API.http
+EarTrain.API/EarTrain.API.csproj.user
+EarTrain.API/appsettings.json
+EarTrain.API/appsettings.Development.json
+EarTrain.API/Properties/
+
+EarTrain.Infrastructure/Migrations/
