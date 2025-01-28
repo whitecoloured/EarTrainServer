@@ -1,5 +1,4 @@
 ﻿using EarTrain.Core.Enums;
-using System;
 
 namespace EarTrain.Core.Models
 {

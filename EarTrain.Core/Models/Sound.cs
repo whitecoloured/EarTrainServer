@@ -10,5 +10,14 @@ namespace EarTrain.Core.Models
         public string SoundSrc { get; set; }
         public SoundCategory Category { get; set; }
         public ICollection<TrainTask> Tasks { get; set; }
+
+        public static Sound Create(string SoundSrc, SoundCategory Category)
+        {
+            return new()
+            {
+                SoundSrc = SoundSrc,
+                Category = Category
+            };
+        }
     }
 }

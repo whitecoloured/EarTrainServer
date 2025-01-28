@@ -22,5 +22,18 @@ namespace EarTrain.Core.Models
         public ICollection<Order> Orders { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<ProductReview> ProductReviews { get; set; }
+
+        public static Product Create(string Name, string Desc, ProductsCategory Category, ProductBrand Brand, int Price, List<KeyValuePair<string,string>> Characteristics)
+        {
+            return new()
+            {
+                Name = Name,
+                Description = Desc,
+                Category = Category,
+                Brand = Brand,
+                Price = Price,
+                Characteristics = Characteristics
+            };
+        }
     }
 }

@@ -25,8 +25,19 @@ namespace EarTrain.Infrastructure.Configurations
 
             builder
                 .Property(p => p.Role)
-                .HasConversion<int>()
-                .IsRequired();
+                .HasConversion<int>();
+
+            builder
+                .Property(p => p.ETCoinsAmount)
+                .HasDefaultValue(0);
+
+            builder
+                .Property(p=> p.TrainingsCompletedAmount)
+                .HasDefaultValue(0);
+
+            builder
+                .Property(p=> p.SuccessfullyCompletedTrainingsAmount)
+                .HasDefaultValue(0);
 
             builder
                 .HasMany(p => p.Orders)

@@ -13,5 +13,16 @@ namespace EarTrain.Core.Models
         public Guid? UserID { get; set; }
         public Product Product { get; set; }
         public Guid? ProductID { get; set; }
+
+        public static ProductReview Create(string ReviewDesc, int Mark, User User, Product Product)
+        {
+            return new()
+            {
+                ReviewDesc = ReviewDesc,
+                User = User,
+                Product = Product,
+                Mark = Mark
+            };
+        }
     }
 }

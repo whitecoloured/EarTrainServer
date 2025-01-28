@@ -1,4 +1,6 @@
 using EarTrain.Infrastructure.DI;
+using EarTrain.Application.DI;
+using EarTrain.API.DI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext(builder.Configuration.GetConnectionString("Database"));
+
+builder.Services.AddApplicationServices();
+
+builder.Services.ConfigureCustomOptions(builder.Configuration);
 
 var app = builder.Build();
 

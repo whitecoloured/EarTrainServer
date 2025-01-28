@@ -19,10 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EarTrain.Application\EarTrain.Application.csproj" />
     <ProjectReference Include="..\EarTrain.Infrastructure\EarTrain.Infrastructure.csproj" />
   </ItemGroup>

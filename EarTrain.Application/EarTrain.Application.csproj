@@ -5,4 +5,22 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EarTrain.Core\EarTrain.Core.csproj" />
+    <ProjectReference Include="..\EarTrain.Infrastructure\EarTrain.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CommandsAndQueries\Reviews\" />
+    <Folder Include="CommandsAndQueries\Cart\" />
+    <Folder Include="CommandsAndQueries\Orders\" />
+  </ItemGroup>
+
 </Project>

@@ -18,5 +18,14 @@ namespace EarTrain.Core.Models
             OrderDate = DateTime.Now;
             OrderReceived = DateTime.Now.AddDays(rand.Next(5,8));
         }
+
+        public static Order Create(User User, ICollection<Product> Products)
+        {
+            return new()
+            {
+                Customer = User,
+                Products = Products
+            };
+        }
     }
 }

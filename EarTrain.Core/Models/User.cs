@@ -19,5 +19,21 @@ namespace EarTrain.Core.Models
         public ICollection<Order> Orders { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<ProductReview> ProductReviews { get; set; }
+
+        public User()
+        {
+            Role = UserRole.User;
+        }
+
+        public static User Create(string Login, string Email, string Password, Address Address)
+        {
+            return new()
+            {
+                Login = Login,
+                Email = Email,
+                Password = Password,
+                Address = Address
+            };
+        }
     }
 }
