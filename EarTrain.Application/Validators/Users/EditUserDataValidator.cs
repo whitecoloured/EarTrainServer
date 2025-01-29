@@ -18,6 +18,7 @@ namespace EarTrain.Application.Validators.Users
 
             When(p => !string.IsNullOrWhiteSpace(p.Login), () =>
                 RuleFor(p => p.Login)
+                    .Must(p=> !p.Contains(' '))
                     .Must(p => p.All(char.IsLower))
                     .WithMessage("Ваш логин должен содержать исключительно маленькие буквы!")
             );

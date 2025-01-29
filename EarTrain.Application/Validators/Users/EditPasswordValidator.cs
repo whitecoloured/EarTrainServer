@@ -7,9 +7,11 @@ namespace EarTrain.Application.Validators.Users
     {
         public EditPasswordValidator()
         {
-            RuleFor(p=> p.OldPassword).SetValidator(new PasswordValidator());
+            RuleFor(p=> p.OldPassword).SetValidator(new PasswordValidator())
+                .WithMessage("Установите валидный старый пароль!");
 
-            RuleFor(p=> p.NewPassword).SetValidator(new PasswordValidator());
+            RuleFor(p=> p.NewPassword).SetValidator(new PasswordValidator())
+                .WithMessage("Установите валидный новый пароль!");
         }
     }
 }

@@ -19,6 +19,8 @@ namespace EarTrain.Core.Models
 
         public List<KeyValuePair<string, string>> Characteristics { get; set; }
 
+        public string ImageURL { get; set; }
+
         public ICollection<Order> Orders { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
         public ICollection<ProductReview> ProductReviews { get; set; }

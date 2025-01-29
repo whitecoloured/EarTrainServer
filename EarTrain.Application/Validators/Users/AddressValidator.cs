@@ -24,12 +24,10 @@ namespace EarTrain.Application.Validators.Users
                 .WithMessage("Номер улицы не должен быть пустым!");
 
             When(p => !string.IsNullOrWhiteSpace(p.StreetNumber), () =>
-                {
                     RuleFor(p => p.StreetNumber)
+                        .Must(p => !p.Contains(' '))
                         .Must(p => "0123456789".Contains(p))
-                        .WithMessage("Номер улицы должен содержать цифры!");
-
-               }
+                        .WithMessage("Номер улицы должен содержать цифры!")
             );
         }
     }

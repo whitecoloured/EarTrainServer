@@ -6,6 +6,7 @@ using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace EarTrain.Application.CommandsAndQueries.Users.GetUserData
 {
@@ -21,7 +22,9 @@ namespace EarTrain.Application.CommandsAndQueries.Users.GetUserData
             if (UserID == Guid.Empty)
                 throw new NotFoundException("Ваши данные не были найдены!");
 
-            var data = await _context.Users.FindAsync([UserID],cancellationToken)
+            var data = await _context.Users
+                                .AsNoTracking()
+                                .FirstOrDefaultAsync(p=> p.Id==UserID,cancellationToken)
                             ?? throw new NotFoundException("Ваши данные не были найдены!");
 
             var mappedData=_mapper.Map<GetUserDataResponse>(data);

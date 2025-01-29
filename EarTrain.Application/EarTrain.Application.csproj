@@ -17,10 +17,4 @@
     <ProjectReference Include="..\EarTrain.Infrastructure\EarTrain.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CommandsAndQueries\Reviews\" />
-    <Folder Include="CommandsAndQueries\Cart\" />
-    <Folder Include="CommandsAndQueries\Orders\" />
-  </ItemGroup>
-
 </Project>

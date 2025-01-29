@@ -39,6 +39,10 @@ namespace EarTrain.Infrastructure.Configurations
                 .IsRequired();
 
             builder
+                .Property(p => p.ImageURL)
+                .IsRequired();
+
+            builder
                 .Property(p => p.Characteristics)
                 .HasConversion(
                     data=> JsonConvert.SerializeObject(data),

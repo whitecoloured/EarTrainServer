@@ -1,6 +1,7 @@
 using EarTrain.Infrastructure.DI;
 using EarTrain.Application.DI;
 using EarTrain.API.DI;
+using EarTrain.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.MapControllers();
 

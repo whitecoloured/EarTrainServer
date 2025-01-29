@@ -17,6 +17,14 @@ namespace EarTrain.Application.Validators.Tasks
                 .IsInEnum()
                 .WithMessage("Установите правильную категорию задания!");
 
+            RuleFor(p => p.OGSoundSrc)
+                .NotEmpty()
+                .WithMessage("Ссылка на оригинальный аудиофайл не должна быть пустой!");
+
+            RuleFor(p => p.ChangedSoundSrc)
+                .NotEmpty()
+                .WithMessage("Ссылка на измененный аудиофайл не должна быть пустой!");
+
             RuleFor(p => p.Answer)
                 .NotEmpty()
                 .WithMessage("Установите правильный ответ задания!");

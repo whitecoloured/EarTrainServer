@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Primitives;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,23 +11,45 @@ namespace EarTrain.Application.OtherServices.JWT
     {
         public static Guid GetUserIDFromToken(KeyValuePair<string, StringValues> HeaderData)
         {
-            string token = HeaderData.Value.ToString()["Bearer ".Length..];
-            if (string.IsNullOrEmpty(token)) 
+            string strToken = HeaderData.Value.ToString()["Bearer ".Length..];
+
+            if (string.IsNullOrEmpty(strToken)) 
                 return Guid.Empty;
 
-            Guid UserID = Guid.Parse(new JwtSecurityTokenHandler().ReadJwtToken(token).Claims.FirstOrDefault(x => x.Type == "ID").Value);
+            JwtSecurityToken token = default;
+
+            try
+            {
+                token = new JwtSecurityTokenHandler().ReadJwtToken(strToken);
+            }
+            catch(SecurityTokenMalformedException)
+            {
+                return Guid.Empty;
+            }
+
+            Guid UserID = Guid.Parse(token.Claims.FirstOrDefault(x => x.Type == "ID").Value);
 
             return UserID;
         }
 
         public static string GetUserRoleFromToken(KeyValuePair<string, StringValues> HeaderData)
         {
-            string token = HeaderData.Value.ToString()["Bearer ".Length..];
+            string strToken = HeaderData.Value.ToString()["Bearer ".Length..];
 
-            if (string.IsNullOrEmpty(token)) 
+            if (string.IsNullOrEmpty(strToken)) 
                 return null;
 
-            string role = new JwtSecurityTokenHandler().ReadJwtToken(token).Claims.FirstOrDefault(x => x.Type == "Role").Value;
+            JwtSecurityToken token = default;
+            try
+            {
+                token = new JwtSecurityTokenHandler().ReadJwtToken(strToken);
+            }
+            catch (SecurityTokenMalformedException)
+            {
+                return null;
+            }
+
+            string role = token.Claims.FirstOrDefault(x => x.Type == "Role").Value;
 
             return role;
         }
